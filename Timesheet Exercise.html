@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="data.css" />
-    <!-- Jscript Ref -->
-    <!-- <script src="javascript/train.js"></script> -->
+    <!-- Momentjs Ref -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <!-- Firebase Ref -->
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
 </head>
@@ -45,7 +45,7 @@
                             <td id="startDate-input"></td>
                             <td id="monthsWorked"></td>
                             <td id="monthlyRate-input"></td>
-
+                            <td id="totalBill-input"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -140,9 +140,18 @@
             $("#roleForm-input").text(sv.role);
 
 
-        }, function (errorObject) {
+
+
+            var currentDate = moment().date(day).month(month).year(year)
+                .format("DD/MM/YY");
+            console.log(moment(startDate, "DD/MM/YY").from(currentDate));
+        })
+
+
+
+        function (errorObject) {
             console.log("Errors handled: " + errorObject.code);
-        });
+        }
     </script>
 </body>
 
